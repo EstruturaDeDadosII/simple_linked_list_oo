@@ -1,0 +1,22 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/faculdade/estrutura-de-dados-2/simples-linked-list/LinkedList.h
+iostream
+-
+node.h
+D:/faculdade/estrutura-de-dados-2/simples-linked-list/node.h
+
+D:/faculdade/estrutura-de-dados-2/simples-linked-list/main.cpp
+iostream
+-
+LinkedList.h
+D:/faculdade/estrutura-de-dados-2/simples-linked-list/LinkedList.h
+
+D:/faculdade/estrutura-de-dados-2/simples-linked-list/node.h
+
