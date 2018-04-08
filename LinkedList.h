@@ -24,7 +24,7 @@ public:
     }
 
     ~LinkedList() {
-        for (node *p; !this->isEmpty(); ) {
+        for (node *p; !this->isEmpty();) {
             p = topo->proximo;
             delete topo;
             topo = p;
@@ -88,36 +88,71 @@ public:
         return elemento;
     }
 
-    void displayList(){ //mostra lista
-        if (!isEmpty()){
+    void displayList() { //mostra lista
+        if (!isEmpty()) {
             node *tmp;
             cout << "[ ";
-            for(tmp = this->topo; tmp != 0; tmp = tmp->proximo){
+            for (tmp = this->topo; tmp != 0; tmp = tmp->proximo) {
                 cout << tmp->info << " ";
             }
             cout << " ]" << endl << endl;
             cout << endl;
         } else {
-            cout<<"Lista Vazia!\n";
+            cout << "Lista Vazia!\n";
         }
     }
 
     int removeNode(int elemento) {
-        cout << "FUNCAO REMOVE NODE" << endl;
+
+        if (this->topo->info == elemento) {
+            return this->removeTopo();
+        }
+
+        if (this->topo->info == elemento) {
+            return this->removeFim();
+        }
+
+        if (this->topo == this->resto) {
+            if (this->topo->info == elemento) {
+                return this->removeTopo();
+            }
+            if (this->topo->info == elemento) {
+                return this->removeFim();
+            }
+        } else if (this->estaNaLista(elemento)) {
+            int cond = 1;
+            node *tmp, *anterior;
+
+            for (tmp = this->topo; cond != 0; tmp = tmp->proximo) {
+                if (tmp->info == elemento) {
+                    anterior->proximo = tmp->proximo;
+                    cond = 0;
+                    delete tmp;
+                } else {
+                    anterior = tmp;
+                }
+            }
+
+            return elemento;
+        } else {
+            cout << "NAO ESTA NA LISTA!\n";
+        }
+
+        return -9999;
+
     }
 
-    void estaNaLista(int elemento) {
+    bool estaNaLista(int elemento) {
         cout << "FUNCAO ESTA NA LISTA" << endl;
 
         if (this->topo->info == elemento) {
             cout << "Este elemento esta no topo" << endl;
-            return;
+            return true;
         } else if (this->resto->info == elemento) {
             cout << "Este elemento esta no fim" << endl;
-            return;
+            return true;
         } else {
             node *tmp;
-
             int posicao = 0;
             int quantidade = 0;
             for (tmp = this->topo; tmp->proximo != this->resto; tmp = tmp->proximo) {
@@ -127,12 +162,12 @@ public:
                     ++quantidade;
                 }
             }
-
             if (quantidade == 0)
                 cout << "Nao achamos nenhum elemento com este valor" << endl << endl;
-
-            return;
+            else
+                return true;
         }
+        return false;
 
     }
 

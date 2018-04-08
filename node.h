@@ -20,6 +20,7 @@ public:
         this->info = elemento;
         this->proximo = ponteiro;
     }
+
 };
 
 

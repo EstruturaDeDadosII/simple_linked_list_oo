@@ -96,7 +96,14 @@ void menu() {
                 cin.clear();
                 fflush(stdin);
                 cin >> elemento;
-                list.removeNode(elemento);
+                int retorno = list.removeNode(elemento);
+
+                if (retorno < 0)
+                    cout << "NAO ENCONTRAMOS O ELEMENTO" << endl;
+                else
+                    cout << "NUMERO REMOVIDO COM SUCESSO" << endl << endl;
+
+
             } else {
                 cout << "A lista esta vazia" << endl << endl;
             }
